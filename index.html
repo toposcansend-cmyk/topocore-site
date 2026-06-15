@@ -8,7 +8,7 @@
 <meta name="keywords" content="sistema de gestão para PME, CRM brasileiro, cobrança PIX WhatsApp, proposta automática, software sob medida, ERP para pequena empresa, sistema para engenharia e construção, gestão financeira PIX, grupo Toposcan">
 <meta name="author" content="Topocore — Grupo Toposcan">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
-<meta name="theme-color" content="#070B14">
+<meta name="theme-color" content="#0D0D0D">
 <link rel="canonical" href="https://topocore.com.br/">
 <!-- Open Graph (WhatsApp / Facebook / LinkedIn) -->
 <meta property="og:site_name" content="Topocore">
@@ -26,16 +26,16 @@
 <meta name="twitter:title" content="Topocore — O núcleo do seu negócio, da proposta ao PIX">
 <meta name="twitter:description" content="Proposta automática, cobrança PIX por WhatsApp, financeiro e nota fiscal num sistema sob medida. Em real, com gente de verdade do seu lado.">
 <meta name="twitter:image" content="https://topocore.com.br/marca/og-cover.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23006CFF'/%3E%3Cg stroke='white' stroke-width='2.6' stroke-linecap='round'%3E%3Cline x1='32' y1='32' x2='32' y2='16'/%3E%3Cline x1='32' y1='32' x2='48' y2='32'/%3E%3Cline x1='32' y1='32' x2='32' y2='48'/%3E%3Cline x1='32' y1='32' x2='16' y2='32'/%3E%3C/g%3E%3Ccircle cx='32' cy='16' r='3' fill='white'/%3E%3Ccircle cx='48' cy='32' r='3' fill='white'/%3E%3Ccircle cx='32' cy='48' r='3' fill='white'/%3E%3Ccircle cx='16' cy='32' r='3' fill='white'/%3E%3Ccircle cx='32' cy='32' r='5.5' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231E5BFF'/%3E%3Cpath d='M43 21 A16 16 0 1 0 43 43' stroke='white' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --azul:#006CFF; --azul-claro:#3D9BFF; --verde:#16C784;
-  --bg:#070B14; --bg2:#0B1220; --surf:#0F1A2E; --surf2:#13203A;
-  --borda:#1E2A44; --borda2:#2A3A5C;
-  --branco:#FFFFFF; --txt:#AEBBD0; --txt2:#7C8AA5;
+  --azul:#1E5BFF; --azul-claro:#5B85FF; --verde:#16C784;
+  --bg:#0D0D0D; --bg2:#141418; --surf:#1A1A20; --surf2:#22222A;
+  --borda:#2B2B33; --borda2:#3B3B46;
+  --branco:#FFFFFF; --txt:#B9BCC6; --txt2:#83858F;
   --raio:16px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -46,26 +46,29 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
 
-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--borda)}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--borda)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{display:flex;align-items:center;gap:11px;font-family:'Jost';font-weight:600;font-size:25px;color:var(--branco);letter-spacing:-.01em}
-.logo .core{color:var(--azul)}
+.logo{display:inline-flex;align-items:center;font-family:'Poppins','Jost',sans-serif;font-weight:600;font-size:23px;color:var(--branco);letter-spacing:.5px}
+.logo .lc{color:var(--azul)}
+.logo .le{display:inline-flex;flex-direction:column;justify-content:center;gap:3px;margin-left:5px}
+.logo .le i{display:block;height:3.5px;border-radius:2px;background:var(--azul)}
+.logo .le i:nth-child(1){width:15px}.logo .le i:nth-child(2){width:11px}.logo .le i:nth-child(3){width:15px}
 .nav-links{display:flex;gap:26px;align-items:center}
 .nav-links a{font-size:14.5px;font-weight:400;color:var(--txt);transition:color .2s}
 .nav-links a:hover{color:var(--branco)}
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Jost';font-weight:600;font-size:15px;padding:12px 22px;border-radius:11px;cursor:pointer;border:none;transition:transform .15s,box-shadow .2s,background .2s;white-space:nowrap}
-.btn-primary{background:var(--azul);color:#fff;box-shadow:0 8px 24px -8px rgba(0,108,255,.7)}
-.btn-primary:hover{transform:translateY(-2px);background:#1a7cff;box-shadow:0 12px 30px -8px rgba(0,108,255,.85)}
+.btn-primary{background:var(--azul);color:#fff;box-shadow:0 8px 24px -8px rgba(30,91,255,.7)}
+.btn-primary:hover{transform:translateY(-2px);background:#4D79FF;box-shadow:0 12px 30px -8px rgba(30,91,255,.85)}
 .btn-ghost{background:transparent;color:var(--branco);border:1.5px solid var(--borda2)}
 .btn-ghost:hover{border-color:var(--azul);color:var(--azul-claro)}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;color:#fff}
 
 .hero{padding:148px 0 70px;position:relative;overflow:hidden;background:
-  radial-gradient(900px 460px at 78% -8%,rgba(0,108,255,.22),transparent 60%),
-  radial-gradient(700px 380px at 10% 110%,rgba(0,108,255,.10),transparent 55%);}
+  radial-gradient(900px 460px at 78% -8%,rgba(30,91,255,.22),transparent 60%),
+  radial-gradient(700px 380px at 10% 110%,rgba(30,91,255,.10),transparent 55%);}
 .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(120,160,255,.16) 1.1px,transparent 1.2px);background-size:26px 26px;mask-image:radial-gradient(700px 400px at 75% 10%,#000,transparent 75%);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center;position:relative}
-.gp{display:inline-flex;align-items:center;gap:9px;background:rgba(0,108,255,.12);border:1px solid rgba(0,108,255,.3);color:var(--azul-claro);font-weight:500;font-size:13px;padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.gp{display:inline-flex;align-items:center;gap:9px;background:rgba(30,91,255,.12);border:1px solid rgba(30,91,255,.3);color:var(--azul-claro);font-weight:500;font-size:13px;padding:7px 14px;border-radius:999px;margin-bottom:22px}
 .gp b{color:#fff;font-weight:600}
 .hero h1{font-size:clamp(34px,4.7vw,54px);font-weight:700;color:#fff;margin-bottom:20px;letter-spacing:-.02em}
 .hero h1 .hl{color:var(--azul-claro)}
@@ -78,7 +81,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,11,20,.
 
 .mock{background:var(--surf);border-radius:18px;box-shadow:0 30px 70px -25px rgba(0,0,0,.8);border:1px solid var(--borda2);overflow:hidden}
 .mock-top{background:var(--bg2);padding:13px 18px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--borda)}
-.mock-top .d{width:11px;height:11px;border-radius:50%;background:#2a3a5c}
+.mock-top .d{width:11px;height:11px;border-radius:50%;background:#3B3B46}
 .mock-top .t{margin-left:10px;color:#fff;font-size:13px;font-family:'Jost';font-weight:500;opacity:.9}
 .mock-body{padding:20px}
 .mock-row{display:flex;gap:12px;margin-bottom:14px}
@@ -110,16 +113,16 @@ section{padding:90px 0}
 
 .flow{display:flex;align-items:stretch;justify-content:center;flex-wrap:wrap;max-width:1000px;margin:0 auto;gap:14px}
 .flow-step{flex:1;min-width:175px;text-align:center;padding:26px 18px;background:var(--surf);border:1px solid var(--borda);border-radius:var(--raio)}
-.flow-step .n{width:42px;height:42px;margin:0 auto 14px;border-radius:50%;background:rgba(0,108,255,.14);border:1px solid rgba(0,108,255,.4);color:var(--azul-claro);display:flex;align-items:center;justify-content:center;font-family:'Jost';font-weight:600}
+.flow-step .n{width:42px;height:42px;margin:0 auto 14px;border-radius:50%;background:rgba(30,91,255,.14);border:1px solid rgba(30,91,255,.4);color:var(--azul-claro);display:flex;align-items:center;justify-content:center;font-family:'Jost';font-weight:600}
 .flow-step h4{font-size:16px;margin-bottom:6px;color:#fff}
 .flow-step p{font-size:13.5px;color:var(--txt2)}
 
 .prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.prod-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,108,255,.12);border:1px solid rgba(0,108,255,.35);color:var(--azul-claro);font-family:'Jost';font-weight:600;font-size:13px;padding:6px 14px;border-radius:8px;margin-bottom:18px}
+.prod-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(30,91,255,.12);border:1px solid rgba(30,91,255,.35);color:var(--azul-claro);font-family:'Jost';font-weight:600;font-size:13px;padding:6px 14px;border-radius:8px;margin-bottom:18px}
 .prod h3{font-size:30px;margin-bottom:14px;color:#fff}
 .feat-list{list-style:none;margin-top:20px;display:grid;gap:12px}
 .feat-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--txt)}
-.feat-list .ck{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:rgba(0,108,255,.16);display:flex;align-items:center;justify-content:center;color:var(--azul-claro);margin-top:1px}
+.feat-list .ck{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:rgba(30,91,255,.16);display:flex;align-items:center;justify-content:center;color:var(--azul-claro);margin-top:1px}
 .stat-band{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap}
 .stat{background:var(--surf);border:1px solid var(--borda);border-radius:14px;padding:16px 20px;flex:1;min-width:140px}
 .stat .big{font-family:'Jost';font-weight:700;font-size:30px;color:var(--azul-claro)}
@@ -128,12 +131,12 @@ section{padding:90px 0}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .card{background:var(--surf);border:1px solid var(--borda);border-radius:var(--raio);padding:30px;transition:transform .2s,border-color .2s}
 .card:hover{transform:translateY(-4px);border-color:var(--borda2)}
-.card .ic{width:52px;height:52px;border-radius:13px;background:rgba(0,108,255,.12);display:flex;align-items:center;justify-content:center;color:var(--azul-claro);margin-bottom:18px}
+.card .ic{width:52px;height:52px;border-radius:13px;background:rgba(30,91,255,.12);display:flex;align-items:center;justify-content:center;color:var(--azul-claro);margin-bottom:18px}
 .card h4{font-size:18px;margin-bottom:8px;color:#fff}
 .card p{font-size:14.5px;color:var(--txt2)}
 
-.case{background:linear-gradient(135deg,#0b1830,#0a1424);border:1px solid var(--borda2);border-radius:22px;padding:54px;position:relative;overflow:hidden}
-.case::after{content:"";position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,108,255,.22),transparent 70%)}
+.case{background:linear-gradient(135deg,#141420,#101015);border:1px solid var(--borda2);border-radius:22px;padding:54px;position:relative;overflow:hidden}
+.case::after{content:"";position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(30,91,255,.22),transparent 70%)}
 .case .kicker{color:var(--azul-claro);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;position:relative;z-index:1}
 .case h2{font-size:clamp(25px,3vw,35px);margin-bottom:18px;max-width:780px;position:relative;z-index:1}
 .case h2 em{color:var(--azul-claro);font-style:normal}
@@ -143,7 +146,7 @@ section{padding:90px 0}
 
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
 .plan{background:var(--surf);border:1px solid var(--borda);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column}
-.plan.feat{border-color:var(--azul);box-shadow:0 0 0 1px var(--azul),0 24px 50px -24px rgba(0,108,255,.5);position:relative}
+.plan.feat{border-color:var(--azul);box-shadow:0 0 0 1px var(--azul),0 24px 50px -24px rgba(30,91,255,.5);position:relative}
 .plan.feat .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--azul);color:#fff;font-family:'Jost';font-weight:600;font-size:12px;padding:5px 16px;border-radius:999px}
 .plan h4{font-size:20px;margin-bottom:6px;color:#fff}
 .plan .desc{font-size:13.5px;color:var(--txt2);min-height:40px}
@@ -164,20 +167,20 @@ section{padding:90px 0}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:15px;color:var(--txt2)}
 .faq-a div{padding:0 0 22px}
 
-.cta-final{background:linear-gradient(135deg,#006CFF,#0047b3);border-radius:24px;padding:62px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-final{background:linear-gradient(135deg,#1E5BFF,#1442CC);border-radius:24px;padding:62px 40px;text-align:center;position:relative;overflow:hidden}
 .cta-final::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1.2px);background-size:24px 24px;opacity:.5}
 .cta-final h2{color:#fff;font-size:clamp(28px,3.4vw,42px);margin-bottom:16px;max-width:680px;margin-inline:auto;position:relative}
 .cta-final p{color:rgba(255,255,255,.92);font-size:18px;max-width:620px;margin:0 auto 30px;position:relative}
-.cta-final .btn{background:#fff;color:#0047b3;font-size:17px;padding:15px 30px;position:relative}
+.cta-final .btn{background:#fff;color:#1442CC;font-size:17px;padding:15px 30px;position:relative}
 .cta-final .btn:hover{transform:translateY(-2px)}
 
-footer{background:#060912;border-top:1px solid var(--borda);padding:58px 0 30px;font-size:14px;color:var(--txt2)}
+footer{background:#0A0A0C;border-top:1px solid var(--borda);padding:58px 0 30px;font-size:14px;color:var(--txt2)}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:38px}
 footer h5{font-family:'Jost';color:#fff;font-size:15px;margin-bottom:16px;font-weight:500}
 footer ul{list-style:none;display:grid;gap:9px}
 footer a:hover{color:var(--azul-claro)}
 .foot-brand p{margin-top:14px;max-width:310px;font-size:13.5px;line-height:1.7}
-.foot-legal{border-top:1px solid var(--borda);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:#54607a}
+.foot-legal{border-top:1px solid var(--borda);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:#6A6A72}
 .ph{background:rgba(255,255,255,.08);border-radius:5px;padding:1px 7px;color:#fff;font-size:12px}
 
 .wa{position:fixed;right:22px;bottom:22px;z-index:200;width:60px;height:60px;border-radius:50%;background:#25D366;box-shadow:0 10px 26px -6px rgba(37,211,102,.6);display:flex;align-items:center;justify-content:center;transition:transform .2s}
@@ -257,11 +260,7 @@ footer a:hover{color:var(--azul-claro)}
 <header>
   <div class="wrap nav">
     <a href="#hero" class="logo" aria-label="Topocore - início">
-      <svg width="38" height="38" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <g stroke="#006CFF" stroke-width="2.6" stroke-linecap="round"><line x1="32" y1="32" x2="32" y2="16"/><line x1="32" y1="32" x2="48" y2="32"/><line x1="32" y1="32" x2="32" y2="48"/><line x1="32" y1="32" x2="16" y2="32"/></g>
-        <circle cx="32" cy="16" r="3" fill="#fff"/><circle cx="48" cy="32" r="3" fill="#fff"/><circle cx="32" cy="48" r="3" fill="#fff"/><circle cx="16" cy="32" r="3" fill="#fff"/><circle cx="32" cy="32" r="5.4" fill="#fff"/>
-      </svg>
-      Topo<span class="core">core</span>
+      TOPO<span class="lc">COR</span><span class="le" aria-hidden="true"><i></i><i></i><i></i></span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#dores">O que resolve</a>
@@ -511,10 +510,7 @@ footer a:hover{color:var(--azul-claro)}
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#hero" class="logo" style="font-size:23px">
-          <svg width="34" height="34" viewBox="0 0 64 64" fill="none"><g stroke="#006CFF" stroke-width="2.6" stroke-linecap="round"><line x1="32" y1="32" x2="32" y2="16"/><line x1="32" y1="32" x2="48" y2="32"/><line x1="32" y1="32" x2="32" y2="48"/><line x1="32" y1="32" x2="16" y2="32"/></g><circle cx="32" cy="16" r="3" fill="#fff"/><circle cx="48" cy="32" r="3" fill="#fff"/><circle cx="32" cy="48" r="3" fill="#fff"/><circle cx="16" cy="32" r="3" fill="#fff"/><circle cx="32" cy="32" r="5.4" fill="#fff"/></svg>
-          <span style="color:#fff">Topo<span style="color:var(--azul)">core</span></span>
-        </a>
+        <a href="#hero" class="logo" style="font-size:21px">TOPO<span class="lc">COR</span><span class="le" aria-hidden="true"><i></i><i></i><i></i></span></a>
         <p>O núcleo do seu negócio. Sistemas de gestão sob medida, em real, com gente de verdade do seu lado. Uma empresa do Grupo Toposcan.</p>
       </div>
       <div>
@@ -541,7 +537,7 @@ footer a:hover{color:var(--azul-claro)}
           <li>WhatsApp <a href="https://wa.me/5541984908105" target="_blank" rel="noopener" style="color:#fff">(41) 98490-8105</a></li>
           <li>E-mail <a href="mailto:contato@topocore.com.br?subject=Orcamento%20Topocore" style="color:#fff">contato@topocore.com.br</a></li>
           <li>Comercial <span class="ph">comercial@topocore.com.br</span></li>
-          <li style="margin-top:6px;color:#54607a">Atendimento em português, de gente de verdade.</li>
+          <li style="margin-top:6px;color:#6A6A72">Atendimento em português, de gente de verdade.</li>
         </ul>
       </div>
     </div>
