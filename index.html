@@ -663,7 +663,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     tcEvent('generate_lead',{value:1,currency:'BRL',setor:data.setor||''});
     var t='Olá! Sou '+data.nome+' da '+data.empresa+'. Setor: '+(data.setor||'-')+'. '+(data.mensagem?('Aperta hoje: '+data.mensagem+'. '):'')+'Quero um diagnóstico Topocore.';
     var waUrl='https://wa.me/5541984908105?text='+encodeURIComponent(t);
-    var go=function(){ location.href='obrigado.html?w='+encodeURIComponent(waUrl); };
+    var go=function(){ try{sessionStorage.setItem('tc_lead_wa',waUrl);}catch(e){} location.href='obrigado.html'; };
     if(LEAD_ENDPOINT){ fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)}).then(go).catch(go); }
     else { go(); }
   });}
