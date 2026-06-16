@@ -254,20 +254,22 @@ footer a:hover{color:var(--azul-claro)}
 <script>
   // TODO Guilherme: troque pelos IDs reais. Enquanto contiver 'XXXX', NADA carrega/envia (sem hits falsos).
   window.TOPOCORE = window.TOPOCORE || {};
-  TOPOCORE.GA4 = 'G-XXXXXXXXXX';   // ID de medição do GA4 (Admin > Fluxos de dados)
-  TOPOCORE.ADS = 'AW-XXXXXXXXXX';  // ID de conversão do Google Ads
+  TOPOCORE.GA4 = 'G-XXXXXXXXXX';    // ID do GA4 (opcional — preencher quando criar a propriedade)
+  TOPOCORE.ADS = 'AW-18242697728';  // Tag do Google Ads (conta TopoCore) — LIVE
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   // Consent Mode v2 — tudo NEGADO por padrão; o banner concede depois.
   gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
   (function(){
-    if (TOPOCORE.GA4.indexOf('XXXX') !== -1) return; // placeholder -> não carrega a lib
+    var ga4 = TOPOCORE.GA4.indexOf('XXXX')===-1, ads = TOPOCORE.ADS.indexOf('XXXX')===-1;
+    if (!ga4 && !ads) return;                       // nada configurado -> sem hits
+    var loadId = ga4 ? TOPOCORE.GA4 : TOPOCORE.ADS; // carrega a lib com qualquer ID válido
     var s=document.createElement('script'); s.async=true;
-    s.src='https://www.googletagmanager.com/gtag/js?id='+TOPOCORE.GA4;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+loadId;
     document.head.appendChild(s);
     gtag('js', new Date());
-    gtag('config', TOPOCORE.GA4, {anonymize_ip:true});
-    if (TOPOCORE.ADS.indexOf('XXXX') === -1) gtag('config', TOPOCORE.ADS);
+    if (ga4) gtag('config', TOPOCORE.GA4, {anonymize_ip:true});
+    if (ads) gtag('config', TOPOCORE.ADS);
   })();
 </script>
 <!-- ================================================================== -->
