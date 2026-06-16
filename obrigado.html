@@ -54,7 +54,7 @@
 <script>
   window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
   var ADS='AW-18242697728';   // tag do Google Ads (conta TopoCore) — esta é a página de conversão (lead enviado)
-  var CONV_LABEL='';          // rótulo da conversão "Enviar formulário de lead". Vazio = conta por URL (/obrigado.html). Preencher p/ event-based.
+  var CONV_LABEL='pTlUCOH1878cEID05fpD';   // rótulo da conversão "Enviar formulário de lead" (Ads AW-18242697728)
   var GA4='G-XXXXXXXXXX';     // GA4 opcional
   try{var c=localStorage.getItem('tc_consent');var g=(c==='granted'?'granted':'denied');gtag('consent','default',{ad_storage:g,analytics_storage:g,ad_user_data:g,ad_personalization:g});}catch(e){}
   (function(){
@@ -63,7 +63,7 @@
     var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+(ga4?GA4:ADS);document.head.appendChild(s);
     gtag('js',new Date());
     if(ga4)gtag('config',GA4);
-    if(ads){ gtag('config',ADS); if(CONV_LABEL) gtag('event','conversion',{'send_to':ADS+'/'+CONV_LABEL}); }
+    if(ads){ gtag('config',ADS); var _l=null; try{_l=sessionStorage.getItem('tc_lead_wa');}catch(e){} if(CONV_LABEL && _l) gtag('event','conversion',{'send_to':ADS+'/'+CONV_LABEL}); }
   })();
   // pré-preenche o WhatsApp com a mensagem do formulário (via sessionStorage; sem URL no query p/ não bater no Mod_Security)
   try{var _w=sessionStorage.getItem('tc_lead_wa');if(_w){var _b=document.querySelector('a.btn-wa');if(_b){_b.href=_w;}sessionStorage.removeItem('tc_lead_wa');}}catch(e){}
