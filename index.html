@@ -545,6 +545,7 @@ footer a:hover{color:var(--azul-claro)}
         </div>
         <div class="fld"><label for="lf-msg">O que mais te aperta hoje? (opcional)</label><textarea id="lf-msg" name="mensagem" rows="2" placeholder="Ex.: proposta demora, cobrança esquece, caixa no escuro…"></textarea></div>
         <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="pagina">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button type="submit" class="btn submit">Quero meu diagnóstico (sem compromisso)</button>
         <p class="priv">Ao enviar, você concorda com a nossa <a href="privacidade.html">Política de Privacidade</a>. Resposta em real, de gente de verdade.</p>
       </form>
@@ -652,14 +653,14 @@ document.querySelectorAll('.faq-q').forEach(function(q){
   document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.addEventListener('click',function(){tcEvent('contact_email',{});});});
 
   // formulário de lead
-  var LEAD_ENDPOINT=''; // TODO: URL do Apps Script (/exec) de captura de lead, SEM secret. Vazio -> WhatsApp pré-preenchido.
+  var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbz_EE5M_grgoMdkjs7OJHHlDPSQB8qH-oJ4T6Pqg-0qDZYWq1qTZv_sZeJ6mXU-5-Gt3A/exec'; // CRM Apps Script -> e-mail (submitWebLead, sem secret)
   var form=document.getElementById('leadForm');
   if(form){form.addEventListener('submit',function(e){
     e.preventDefault();
     var ok=true,first=null;[].forEach.call(form.querySelectorAll('[required]'),function(el){if(!el.value.trim()){el.style.borderColor='#ff6b6b';ok=false;if(!first)first=el;}else{el.style.borderColor='';}});
     if(!ok){if(first){first.focus();first.scrollIntoView({block:'center'});}return;}
     var data={};[].forEach.call(form.elements,function(el){if(el.name)data[el.name]=el.value;});
-    data.origem='site-topocore'; data.ts=new Date().toISOString();
+    data.origem='site-topocore'; data.ts=new Date().toISOString(); data.action='submitWebLead';
     tcEvent('generate_lead',{value:1,currency:'BRL',setor:data.setor||''});
     var t='Olá! Sou '+data.nome+' da '+data.empresa+'. Setor: '+(data.setor||'-')+'. '+(data.mensagem?('Aperta hoje: '+data.mensagem+'. '):'')+'Quero um diagnóstico Topocore.';
     var waUrl='https://wa.me/5541984908105?text='+encodeURIComponent(t);
