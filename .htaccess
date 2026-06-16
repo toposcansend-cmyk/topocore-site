@@ -1,0 +1,22 @@
+# Topocore — charset + cache (HostGator/Apache)
+# Objetivo: (1) sempre servir UTF-8; (2) HTML nunca em cache velho (evita
+# "precisa dar hard-refresh" apos um deploy); (3) assets com cache curto.
+
+AddDefaultCharset utf-8
+
+<IfModule mod_headers.c>
+  # HTML: sempre revalidar (pega o deploy novo na hora)
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, must-revalidate, max-age=0"
+  </FilesMatch>
+  # Assets estaticos: cache de 1 dia
+  <FilesMatch "\.(png|jpe?g|gif|svg|webp|ico|woff2?|xml|txt)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+</IfModule>
+
+# Garante o tipo correto do og-cover e do sitemap
+<IfModule mod_mime.c>
+  AddType image/png .png
+  AddType application/xml .xml
+</IfModule>
