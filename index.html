@@ -249,6 +249,28 @@ footer a:hover{color:var(--azul-claro)}
   ]
 }
 </script>
+
+<!-- ===== Topocore · Analytics & Consent (Consent Mode v2 / LGPD) ===== -->
+<script>
+  // TODO Guilherme: troque pelos IDs reais. Enquanto contiver 'XXXX', NADA carrega/envia (sem hits falsos).
+  window.TOPOCORE = window.TOPOCORE || {};
+  TOPOCORE.GA4 = 'G-XXXXXXXXXX';   // ID de medição do GA4 (Admin > Fluxos de dados)
+  TOPOCORE.ADS = 'AW-XXXXXXXXXX';  // ID de conversão do Google Ads
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — tudo NEGADO por padrão; o banner concede depois.
+  gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
+  (function(){
+    if (TOPOCORE.GA4.indexOf('XXXX') !== -1) return; // placeholder -> não carrega a lib
+    var s=document.createElement('script'); s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+TOPOCORE.GA4;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', TOPOCORE.GA4, {anonymize_ip:true});
+    if (TOPOCORE.ADS.indexOf('XXXX') === -1) gtag('config', TOPOCORE.ADS);
+  })();
+</script>
+<!-- ================================================================== -->
 </head>
 <body>
 
@@ -488,6 +510,45 @@ footer a:hover{color:var(--azul-claro)}
     <div class="cta-final">
       <h2>Sua operação merece um sistema feito sob ela.</h2>
       <p>Em uma conversa de 30 minutos, mapeamos onde a sua operação trava hoje e mostramos como o sistema certo destrava. Sem compromisso e com gente que entende o seu negócio do outro lado.</p>
+      <!-- ===== Formulário de lead (captura -> CRM/WhatsApp + conversão) ===== -->
+      <style>
+        .lead-form{max-width:540px;margin:26px auto 8px;text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:22px}
+        .lead-form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .lead-form label{display:block;font-size:12.5px;color:rgba(255,255,255,.88);font-weight:500;margin:0 0 5px}
+        .lead-form .fld{margin-bottom:13px}
+        .lead-form input,.lead-form select,.lead-form textarea{width:100%;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:11px 13px;color:#fff;font-family:inherit;font-size:14.5px}
+        .lead-form input::placeholder,.lead-form textarea::placeholder{color:rgba(255,255,255,.5)}
+        .lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{outline:none;border-color:#fff}
+        .lead-form select,.lead-form select option{color:#111}
+        .lead-form .submit{width:100%;justify-content:center;background:#fff;color:#0b3aa6;font-size:16px;margin-top:4px}
+        .lead-form .priv{font-size:11.5px;color:rgba(255,255,255,.72);margin-top:10px;text-align:center}
+        .lead-form .priv a{color:#fff;text-decoration:underline}
+        .cta-or{color:rgba(255,255,255,.85);font-size:13.5px;margin:16px 0 6px}
+        @media(max-width:560px){.lead-form .row{grid-template-columns:1fr}}
+      </style>
+      <form class="lead-form" id="leadForm" novalidate>
+        <div class="row">
+          <div class="fld"><label for="lf-nome">Seu nome*</label><input id="lf-nome" name="nome" required placeholder="Como te chamam"></div>
+          <div class="fld"><label for="lf-empresa">Empresa*</label><input id="lf-empresa" name="empresa" required placeholder="Nome da empresa"></div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="lf-zap">WhatsApp*</label><input id="lf-zap" name="whatsapp" required inputmode="tel" placeholder="(41) 9 9999-9999"></div>
+          <div class="fld"><label for="lf-setor">Setor</label><select id="lf-setor" name="setor">
+            <option value="">Selecione…</option>
+            <option>Engenharia / Topografia</option>
+            <option>Construção / Construtora</option>
+            <option>Prestador técnico de campo</option>
+            <option>Escritório de serviços</option>
+            <option>Comércio</option>
+            <option>Outro</option>
+          </select></div>
+        </div>
+        <div class="fld"><label for="lf-msg">O que mais te aperta hoje? (opcional)</label><textarea id="lf-msg" name="mensagem" rows="2" placeholder="Ex.: proposta demora, cobrança esquece, caixa no escuro…"></textarea></div>
+        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="pagina">
+        <button type="submit" class="btn submit">Quero meu diagnóstico (sem compromisso)</button>
+        <p class="priv">Ao enviar, você concorda com a nossa <a href="privacidade.html">Política de Privacidade</a>. Resposta em real, de gente de verdade.</p>
+      </form>
+      <p class="cta-or">— ou fale agora mesmo —</p>
       <a href="https://wa.me/5541984908105?text=Oi!%20Quero%20um%20orcamento%20da%20Topocore" class="btn" target="_blank" rel="noopener">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2z"/></svg>
         Falar no WhatsApp agora
@@ -536,7 +597,7 @@ footer a:hover{color:var(--azul-claro)}
     </div>
     <div class="foot-legal">
       <span>Topocore · Grupo Toposcan · Curitiba/PR</span>
-      <span>© 2026 Topocore · Grupo Toposcan. Preços em real (R$), sem reajuste por câmbio. · Política de Privacidade · Termos de Uso</span>
+      <span>© 2026 Topocore · Grupo Toposcan. Preços em real (R$), sem reajuste por câmbio. · <a href="privacidade.html" style="color:inherit;text-decoration:underline">Política de Privacidade</a> · <a href="termos.html" style="color:inherit;text-decoration:underline">Termos de Uso</a></span>
     </div>
   </div>
 </footer>
@@ -555,6 +616,72 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';q.setAttribute('aria-expanded','true')}
   });
 });
+</script>
+
+<!-- ===== Banner de consentimento (LGPD) ===== -->
+<div id="tc-consent" class="tc-consent" hidden role="dialog" aria-label="Aviso de cookies">
+  <span>Usamos cookies para medir e melhorar a experiência. Veja a <a href="privacidade.html">Política de Privacidade</a>.</span>
+  <span class="tc-consent-btns">
+    <button type="button" id="tc-no" class="btn btn-ghost" style="padding:9px 16px">Recusar</button>
+    <button type="button" id="tc-yes" class="btn btn-primary" style="padding:9px 16px">Aceitar</button>
+  </span>
+</div>
+<style>
+  .tc-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:300;max-width:760px;margin:0 auto;background:var(--surf,#1A1A20);border:1px solid var(--borda2,#3B3B46);border-radius:14px;padding:15px 18px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 18px 50px -20px rgba(0,0,0,.8);font-size:13.5px;color:var(--txt,#B9BCC6)}
+  .tc-consent a{color:var(--azul-claro,#5B85FF);text-decoration:underline}
+  .tc-consent-btns{display:flex;gap:10px}
+</style>
+
+<!-- ===== Eventos, captura de UTM, formulário e consentimento ===== -->
+<script>
+(function(){
+  // UTM -> campos ocultos do formulário
+  try{
+    var qs=new URLSearchParams(location.search), f=document.getElementById('leadForm');
+    if(f){['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){var el=f.querySelector('[name="'+k+'"]');if(el)el.value=qs.get(k)||'';});
+      var pg=f.querySelector('[name="pagina"]'); if(pg) pg.value=location.pathname;}
+  }catch(e){}
+
+  // helper de evento (cai no dataLayer mesmo sem GA configurado)
+  function tcEvent(name,params){try{window.dataLayer=window.dataLayer||[];if(typeof gtag==='function'){gtag('event',name,params||{});}else{dataLayer.push(Object.assign({event:name},params||{}));}}catch(e){}}
+  window.tcEvent=tcEvent;
+
+  // cliques de contato
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){a.addEventListener('click',function(){var s=this.closest('section');tcEvent('contact_whatsapp',{secao:s?s.id:'flutuante'});});});
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.addEventListener('click',function(){tcEvent('contact_email',{});});});
+
+  // formulário de lead
+  var LEAD_ENDPOINT=''; // TODO: URL do Apps Script (/exec) de captura de lead, SEM secret. Vazio -> WhatsApp pré-preenchido.
+  var form=document.getElementById('leadForm');
+  if(form){form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true;[].forEach.call(form.querySelectorAll('[required]'),function(el){if(!el.value.trim()){el.style.borderColor='#ff6b6b';ok=false;}else{el.style.borderColor='';}});
+    if(!ok)return;
+    var data={};[].forEach.call(form.elements,function(el){if(el.name)data[el.name]=el.value;});
+    data.origem='site-topocore'; data.ts=new Date().toISOString();
+    tcEvent('generate_lead',{value:1,currency:'BRL',setor:data.setor||''});
+    var go=function(){location.href='obrigado.html';};
+    var whats=function(){
+      var t='Olá! Sou '+data.nome+' da '+data.empresa+'. Setor: '+(data.setor||'-')+'. '+(data.mensagem?('Aperta hoje: '+data.mensagem+'. '):'')+'Quero um diagnóstico Topocore.';
+      window.open('https://wa.me/5541984908105?text='+encodeURIComponent(t),'_blank'); go();
+    };
+    if(LEAD_ENDPOINT){ fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)}).then(go).catch(whats); }
+    else { whats(); }
+  });}
+
+  // consentimento
+  try{
+    var KEY='tc_consent', box=document.getElementById('tc-consent'), choice=localStorage.getItem(KEY);
+    function grant(g){if(typeof gtag==='function'){gtag('consent','update',{ad_storage:g,analytics_storage:g,ad_user_data:g,ad_personalization:g});}}
+    if(choice==='granted'){grant('granted');}
+    else if(choice==='denied'){grant('denied');}
+    else if(box){box.hidden=false;}
+    if(box){
+      document.getElementById('tc-yes').addEventListener('click',function(){localStorage.setItem(KEY,'granted');grant('granted');box.hidden=true;tcEvent('consent_granted',{});});
+      document.getElementById('tc-no').addEventListener('click',function(){localStorage.setItem(KEY,'denied');grant('denied');box.hidden=true;});
+    }
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
