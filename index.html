@@ -665,8 +665,12 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     var t='Olá! Sou '+data.nome+' da '+data.empresa+'. Setor: '+(data.setor||'-')+'. '+(data.mensagem?('Aperta hoje: '+data.mensagem+'. '):'')+'Quero um diagnóstico Topocore.';
     var waUrl='https://wa.me/5541984908105?text='+encodeURIComponent(t);
     var go=function(){ try{sessionStorage.setItem('tc_lead_wa',waUrl);}catch(e){} location.href='obrigado.html'; };
-    if(LEAD_ENDPOINT){ fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)}).then(go).catch(go); }
-    else { go(); }
+    if(LEAD_ENDPOINT){
+      var _body=JSON.stringify(data), _sent=false;
+      try{ _sent = !!(navigator.sendBeacon && navigator.sendBeacon(LEAD_ENDPOINT, new Blob([_body],{type:'text/plain;charset=utf-8'}))); }catch(e){}
+      if(!_sent){ try{ fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:_body}); }catch(e){} }
+    }
+    go();
   });}
 
   // consentimento
