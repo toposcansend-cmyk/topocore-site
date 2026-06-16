@@ -628,6 +628,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
 </div>
 <style>
   .tc-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:300;max-width:760px;margin:0 auto;background:var(--surf,#1A1A20);border:1px solid var(--borda2,#3B3B46);border-radius:14px;padding:15px 18px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 18px 50px -20px rgba(0,0,0,.8);font-size:13.5px;color:var(--txt,#B9BCC6)}
+  .tc-consent[hidden]{display:none}
   .tc-consent a{color:var(--azul-claro,#5B85FF);text-decoration:underline}
   .tc-consent-btns{display:flex;gap:10px}
 </style>
@@ -655,18 +656,16 @@ document.querySelectorAll('.faq-q').forEach(function(q){
   var form=document.getElementById('leadForm');
   if(form){form.addEventListener('submit',function(e){
     e.preventDefault();
-    var ok=true;[].forEach.call(form.querySelectorAll('[required]'),function(el){if(!el.value.trim()){el.style.borderColor='#ff6b6b';ok=false;}else{el.style.borderColor='';}});
-    if(!ok)return;
+    var ok=true,first=null;[].forEach.call(form.querySelectorAll('[required]'),function(el){if(!el.value.trim()){el.style.borderColor='#ff6b6b';ok=false;if(!first)first=el;}else{el.style.borderColor='';}});
+    if(!ok){if(first){first.focus();first.scrollIntoView({block:'center'});}return;}
     var data={};[].forEach.call(form.elements,function(el){if(el.name)data[el.name]=el.value;});
     data.origem='site-topocore'; data.ts=new Date().toISOString();
     tcEvent('generate_lead',{value:1,currency:'BRL',setor:data.setor||''});
-    var go=function(){location.href='obrigado.html';};
-    var whats=function(){
-      var t='Olá! Sou '+data.nome+' da '+data.empresa+'. Setor: '+(data.setor||'-')+'. '+(data.mensagem?('Aperta hoje: '+data.mensagem+'. '):'')+'Quero um diagnóstico Topocore.';
-      window.open('https://wa.me/5541984908105?text='+encodeURIComponent(t),'_blank'); go();
-    };
-    if(LEAD_ENDPOINT){ fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)}).then(go).catch(whats); }
-    else { whats(); }
+    var t='Olá! Sou '+data.nome+' da '+data.empresa+'. Setor: '+(data.setor||'-')+'. '+(data.mensagem?('Aperta hoje: '+data.mensagem+'. '):'')+'Quero um diagnóstico Topocore.';
+    var waUrl='https://wa.me/5541984908105?text='+encodeURIComponent(t);
+    var go=function(){ location.href='obrigado.html?w='+encodeURIComponent(waUrl); };
+    if(LEAD_ENDPOINT){ fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)}).then(go).catch(go); }
+    else { go(); }
   });}
 
   // consentimento

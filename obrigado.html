@@ -56,6 +56,8 @@
   var GA4='G-XXXXXXXXXX';
   try{var c=localStorage.getItem('tc_consent');gtag('consent','default',{ad_storage:c==='granted'?'granted':'denied',analytics_storage:c==='granted'?'granted':'denied',ad_user_data:c==='granted'?'granted':'denied',ad_personalization:c==='granted'?'granted':'denied'});}catch(e){}
   if(GA4.indexOf('XXXX')===-1){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA4;document.head.appendChild(s);gtag('js',new Date());gtag('config',GA4);}
+  // pré-preenche o WhatsApp com a mensagem do formulário (?w=)
+  try{var _w=new URLSearchParams(location.search).get('w');if(_w){var _b=document.querySelector('a.btn-wa');if(_b){_b.href=_w;}}}catch(e){}
 </script>
 </body>
 </html>
