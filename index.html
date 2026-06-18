@@ -78,6 +78,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,
 .hero-trust{margin-top:26px;display:flex;gap:22px;flex-wrap:wrap;font-size:13.5px;color:var(--txt2)}
 .hero-trust span{display:flex;align-items:center;gap:7px}
 .hero-trust svg{color:var(--azul);flex-shrink:0}
+/* hero empilhado: telas do CRM no topo (sob o cabeçalho), texto abaixo */
+.hero-stack{display:flex;flex-direction:column;align-items:center;text-align:center;gap:44px;position:relative}
+.hero-stack .mock-wrap{order:-1;width:100%;max-width:580px}
+.hero-copy{width:100%;max-width:760px}
+.hero-copy p.sub,.hero-copy p.body{margin-left:auto;margin-right:auto}
+.hero-stack .hero-cta{justify-content:center}
+.hero-stack .hero-trust{justify-content:center;margin-top:22px}
 
 .mock{background:var(--surf);border-radius:18px;box-shadow:0 30px 70px -25px rgba(0,0,0,.8);border:1px solid var(--borda2);overflow:hidden}
 .mock-top{background:var(--bg2);padding:13px 18px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--borda)}
@@ -380,8 +387,8 @@ footer a:hover{color:var(--azul-claro)}
 
 <section class="hero" id="hero">
   <div class="dots"></div>
-  <div class="wrap hero-grid">
-    <div>
+  <div class="wrap hero-stack">
+    <div class="hero-copy">
       <h1>Sua empresa tem um jeito próprio de operar. Seu <span class="hl">software</span> também deveria ter.</h1>
       <p class="sub">Criamos sistemas sob medida para organizar processos, automatizar tarefas e dar visão real da operação — sem obrigar a sua equipe a se adaptar a um software genérico.</p>
       <p class="body">Partimos de uma base madura, já em operação no Grupo Toposcan, e desenhamos o sistema em volta do seu fluxo: comercial, financeiro, obra, documentos, indicadores, integrações. Os módulos que a sua operação pede — nem a planilha que te quebra, nem o ERP gringo que te enrola.</p>
