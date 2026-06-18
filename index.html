@@ -67,6 +67,15 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,
   radial-gradient(900px 460px at 78% -8%,rgba(30,91,255,.22),transparent 60%),
   radial-gradient(700px 380px at 10% 110%,rgba(30,91,255,.10),transparent 55%);}
 .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(120,160,255,.16) 1.1px,transparent 1.2px);background-size:26px 26px;mask-image:radial-gradient(700px 400px at 75% 10%,#000,transparent 75%);pointer-events:none}
+/* fundo líquido (blobs de cor desfocados) — base do efeito liquid glass */
+.hero-blobs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hero-blobs b{position:absolute;border-radius:50%;filter:blur(72px);opacity:.55;display:block}
+.hero-blobs b:nth-child(1){width:520px;height:520px;left:-90px;top:-80px;background:radial-gradient(circle,rgba(30,91,255,.65),transparent 70%);animation:blobA 19s ease-in-out infinite}
+.hero-blobs b:nth-child(2){width:440px;height:440px;right:-70px;top:30px;background:radial-gradient(circle,rgba(91,133,255,.5),transparent 70%);animation:blobB 23s ease-in-out infinite}
+.hero-blobs b:nth-child(3){width:400px;height:400px;left:42%;bottom:-150px;background:radial-gradient(circle,rgba(22,199,132,.34),transparent 70%);animation:blobC 27s ease-in-out infinite}
+@keyframes blobA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,40px) scale(1.14)}}
+@keyframes blobB{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-50px,50px) scale(1.1)}}
+@keyframes blobC{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-40px) scale(1.18)}}
 .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center;position:relative}
 .gp{display:inline-flex;align-items:center;gap:9px;background:rgba(30,91,255,.12);border:1px solid rgba(30,91,255,.3);color:var(--azul-claro);font-weight:500;font-size:13px;padding:7px 14px;border-radius:999px;margin-bottom:22px}
 .gp b{color:#fff;font-weight:600}
@@ -106,8 +115,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,
 .mock{position:relative;z-index:1}
 .mock-wrap{position:relative}
 .mock-ghost{position:absolute;inset:0;transform:translate(13px,16px);background:var(--surf);border:1px solid var(--borda);border-radius:18px;opacity:.5;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
-.mock-scrim{position:absolute;inset:0;z-index:2;border-radius:18px;pointer-events:none;background:linear-gradient(180deg,rgba(8,8,12,.12) 0%,rgba(8,8,12,.62) 28%,rgba(8,8,12,.74) 50%,rgba(8,8,12,.62) 72%,rgba(8,8,12,.12) 100%)}
-.mock-wrap .mock-headline{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);width:90%;margin:0;font-family:'Jost',sans-serif;font-weight:700;font-size:clamp(25px,3.1vw,39px);line-height:1.12;letter-spacing:-.02em;color:#fff;text-align:center;text-shadow:0 4px 22px rgba(0,0,0,.6)}
+.mock-scrim{position:absolute;inset:0;z-index:2;border-radius:18px;pointer-events:none;background:radial-gradient(74% 54% at 50% 40%,rgba(6,7,12,.50),transparent 78%)}
+.mock-wrap .mock-headline{position:absolute;z-index:3;left:50%;top:42%;transform:translate(-50%,-50%);width:86%;margin:0;padding:24px 26px;font-family:'Jost',sans-serif;font-weight:700;font-size:clamp(24px,3.0vw,38px);line-height:1.13;letter-spacing:-.02em;color:#fff;text-align:center;text-shadow:0 2px 18px rgba(0,0,0,.55);
+  background:linear-gradient(140deg,rgba(255,255,255,.18),rgba(255,255,255,0) 46%),linear-gradient(150deg,rgba(60,68,96,.50),rgba(16,18,26,.36));
+  -webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.18);border-radius:22px;
+  box-shadow:0 28px 66px -26px rgba(0,0,0,.78),inset 0 1px 0 rgba(255,255,255,.30),inset 0 -1px 0 rgba(0,0,0,.28)}
+.mock-wrap .mock-headline .hl{color:var(--azul-claro)}
 .mock-top .rt{margin-left:auto;display:inline-flex;align-items:center;gap:8px}
 .mock-top .rt .on{font-size:9.5px;color:var(--verde);display:inline-flex;align-items:center;gap:5px;text-transform:uppercase;letter-spacing:.04em}
 .mock-top .rt .on::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 3px rgba(22,199,132,.18)}
@@ -123,7 +137,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,
 .mock-tab.active{color:#fff;border-color:rgba(30,91,255,.45);background:rgba(30,91,255,.14)}
 .mock-tab.active .dt{background:var(--azul-claro)}
 /* toast flutuante (sobreposto) */
-.mock-toast{position:absolute;left:-16px;bottom:92px;z-index:3;display:flex;align-items:center;gap:10px;background:var(--surf2);border:1px solid var(--borda2);border-radius:13px;padding:10px 14px;box-shadow:0 20px 44px -16px rgba(0,0,0,.92);animation:toastFloat 4.5s ease-in-out infinite}
+.mock-toast{position:absolute;left:-16px;bottom:92px;z-index:3;display:flex;align-items:center;gap:10px;background:linear-gradient(150deg,rgba(54,60,82,.62),rgba(20,22,32,.5));-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.16);border-radius:13px;padding:10px 14px;box-shadow:0 22px 46px -16px rgba(0,0,0,.92),inset 0 1px 0 rgba(255,255,255,.22);animation:toastFloat 4.5s ease-in-out infinite}
 .mock-toast .ic{width:28px;height:28px;border-radius:9px;background:rgba(22,199,132,.16);color:var(--verde);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .mock-toast .tx{line-height:1.25}
 .mock-toast .tx b{display:block;font-family:'Jost';font-weight:600;font-size:12.5px;color:#fff}
@@ -191,7 +205,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,
 .cmap-legend span{font-size:10px;color:var(--txt2);display:inline-flex;align-items:center;gap:5px}
 .cmap-legend i{width:7px;height:7px;border-radius:50%;display:inline-block}
 .cmap-legend i.azul{background:var(--azul-claro)} .cmap-legend i.verde{background:var(--verde)} .cmap-legend i.amar{background:#F5A623}
-@media (prefers-reduced-motion: reduce){.cmap-pin.pulse::after,.mock-toast{animation:none}.mock-screen{transition:opacity .2s ease}}
+@media (prefers-reduced-motion: reduce){.cmap-pin.pulse::after,.mock-toast,.hero-blobs b{animation:none}.mock-screen{transition:opacity .2s ease}}
 @media (max-width:980px){.mock-toast{left:-6px}}
 @media (max-width:768px){.mock-stack{height:404px}.mock-toast{display:none}.mock-ghost{transform:translate(9px,11px)}.cf-head .big{font-size:22px}.kpi-main .val{font-size:20px}}
 
@@ -388,6 +402,7 @@ footer a:hover{color:var(--azul-claro)}
 </header>
 
 <section class="hero" id="hero">
+  <div class="hero-blobs" aria-hidden="true"><b></b><b></b><b></b></div>
   <div class="dots"></div>
   <div class="wrap hero-stack">
     <div class="hero-copy">
