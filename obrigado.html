@@ -58,6 +58,7 @@
   try{var c=localStorage.getItem('tc_consent');var g=(c==='granted'?'granted':'denied');gtag('consent','default',{ad_storage:g,analytics_storage:g,ad_user_data:g,ad_personalization:g});}catch(e){}
   gtag('js',new Date());
   gtag('config','AW-18242697728');
+  gtag('config','G-K0C48WZG6K'); // GA4 — Site Topocore
   // conversão: só quando veio de um lead real (sessionStorage), não em visita direta
   try{var _l=sessionStorage.getItem('tc_lead_wa'); if(CONV_LABEL && _l){ gtag('event','conversion',{'send_to':'AW-18242697728/'+CONV_LABEL}); } }catch(e){}
   // pré-preenche o WhatsApp + limpa
