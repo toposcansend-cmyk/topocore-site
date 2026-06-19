@@ -127,7 +127,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,
 .mock-top .rt .on::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 3px rgba(22,199,132,.18)}
 .mock-top .rt .av{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--azul),var(--verde))}
 .mock-stack{position:relative;height:374px}
-.mock-screen{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:12px;opacity:0;transform:translateY(8px) scale(.992);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
+.mock-screen{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;gap:11px;padding:15px 16px;opacity:0;transform:translateY(8px) scale(.992);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
 .mock-screen.active{opacity:1;transform:none;pointer-events:auto;transition-delay:.14s}
 .mock-screen .mock-row{margin-bottom:0}
 .mock-cap{font-size:10.5px;color:var(--txt2);opacity:.55;text-align:center;letter-spacing:.02em;padding:11px 0 3px}
@@ -137,7 +137,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,
 .mock-tab.active{color:#fff;border-color:rgba(30,91,255,.45);background:rgba(30,91,255,.14)}
 .mock-tab.active .dt{background:var(--azul-claro)}
 /* toast flutuante (sobreposto) */
-.mock-toast{position:absolute;left:-16px;bottom:92px;z-index:3;display:flex;align-items:center;gap:10px;background:linear-gradient(150deg,rgba(54,60,82,.62),rgba(20,22,32,.5));-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.16);border-radius:13px;padding:10px 14px;box-shadow:0 22px 46px -16px rgba(0,0,0,.92),inset 0 1px 0 rgba(255,255,255,.22);animation:toastFloat 4.5s ease-in-out infinite}
+.mock-toast{display:none;position:absolute;left:-16px;bottom:92px;z-index:3;align-items:center;gap:10px;background:linear-gradient(150deg,rgba(54,60,82,.62),rgba(20,22,32,.5));-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.16);border-radius:13px;padding:10px 14px;box-shadow:0 22px 46px -16px rgba(0,0,0,.92),inset 0 1px 0 rgba(255,255,255,.22);animation:toastFloat 4.5s ease-in-out infinite}
 .mock-toast .ic{width:28px;height:28px;border-radius:9px;background:rgba(22,199,132,.16);color:var(--verde);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .mock-toast .tx{line-height:1.25}
 .mock-toast .tx b{display:block;font-family:'Jost';font-weight:600;font-size:12.5px;color:#fff}
@@ -213,7 +213,111 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,
   .mock-wrap{display:flex;flex-direction:column}
   .mock-wrap .mock-headline{order:-1;position:static;left:auto;top:auto;transform:none;width:100%;max-width:none;margin:0 auto 18px;font-size:clamp(26px,7vw,38px)}}
 
-.divisor{display:block;width:100%;height:46px;color:var(--bg2)}
+/* ── App shell: cara de SISTEMA de verdade ── */
+.app{display:flex;height:528px;position:relative;z-index:1}
+.app-side{width:134px;flex-shrink:0;background:linear-gradient(180deg,rgba(18,20,28,.92),rgba(12,13,19,.97));border-right:1px solid var(--borda);display:flex;flex-direction:column;padding:14px 10px}
+.app-brand{display:flex;align-items:center;gap:8px;padding:2px 4px 13px}
+.app-logo{width:27px;height:27px;border-radius:8px;background:linear-gradient(135deg,var(--azul),var(--azul-claro));display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#fff;box-shadow:0 4px 12px -2px rgba(30,91,255,.65)}
+.app-bn{font-family:'Jost';font-weight:600;font-size:13px;color:#fff;line-height:1.1}
+.app-bn small{display:block;font-size:8px;color:var(--txt2);font-weight:400;letter-spacing:.02em}
+.app-nav{display:flex;flex-direction:column;gap:2px;margin-top:2px}
+.app-nav-i,.app-nav-x{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:9px;font-size:11.5px;font-weight:500;color:var(--txt2);background:none;border:none;cursor:pointer;text-align:left;width:100%;transition:color .2s,background .2s;position:relative;font-family:inherit}
+.app-nav-i svg,.app-nav-x svg{width:15px;height:15px;flex-shrink:0;opacity:.85}
+.app-nav-i:hover{color:var(--txt)}
+.app-nav-i.active{color:#fff;background:linear-gradient(90deg,rgba(30,91,255,.24),rgba(30,91,255,.05))}
+.app-nav-i.active::before{content:"";position:absolute;left:-10px;top:6px;bottom:6px;width:3px;border-radius:0 3px 3px 0;background:var(--azul-claro);box-shadow:0 0 10px var(--azul-claro)}
+.app-nav-i.active svg{opacity:1;color:var(--azul-claro)}
+.app-nav-x{opacity:.45;cursor:default}
+.app-user{margin-top:auto;display:flex;align-items:center;gap:8px;padding:9px 6px 2px;border-top:1px solid var(--borda)}
+.app-user .av{width:25px;height:25px;border-radius:50%;background:linear-gradient(135deg,var(--azul),var(--verde));flex-shrink:0}
+.app-un{font-size:11px;color:#fff;font-weight:500;line-height:1.15}
+.app-un small{display:block;font-size:8.5px;color:var(--txt2);font-weight:400}
+.app-main{flex:1;display:flex;flex-direction:column;min-width:0;background:radial-gradient(120% 80% at 80% 0,rgba(30,91,255,.06),transparent 60%)}
+.app-top{display:flex;align-items:center;gap:10px;padding:10px 15px;border-bottom:1px solid var(--borda);background:rgba(20,22,30,.45)}
+.app-title{line-height:1.05;flex-shrink:0}
+.app-title b{font-family:'Jost';font-weight:600;font-size:14.5px;color:#fff}
+.app-title span{display:block;font-size:9.5px;color:var(--txt2)}
+.app-search{margin-left:6px;flex:1;max-width:215px;display:flex;align-items:center;gap:7px;background:var(--bg2);border:1px solid var(--borda);border-radius:9px;padding:7px 10px;color:var(--txt2);font-size:11px;overflow:hidden;white-space:nowrap}
+.app-search svg{width:13px;height:13px;flex-shrink:0}
+.app-tr{margin-left:auto;display:flex;align-items:center;gap:11px}
+.app-live{font-size:9px;color:var(--verde);text-transform:uppercase;letter-spacing:.06em;font-weight:700;display:inline-flex;align-items:center;gap:5px}
+.app-live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--verde);animation:livePulse 2s infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(22,199,132,.5)}70%{box-shadow:0 0 0 6px rgba(22,199,132,0)}100%{box-shadow:0 0 0 0 rgba(22,199,132,0)}}
+.app-bell{position:relative;color:var(--txt2);display:flex}
+.app-bell svg{width:16px;height:16px}
+.app-bell i{position:absolute;top:-1px;right:-1px;width:6px;height:6px;border-radius:50%;background:#F5A623;border:1.5px solid var(--surf)}
+.app-tr .av{width:25px;height:25px;border-radius:50%;background:linear-gradient(135deg,var(--azul),var(--verde))}
+.app-stage{position:relative;flex:1;overflow:hidden}
+.app-cap{font-size:9.5px;color:var(--txt2);opacity:.5;text-align:center;padding:5px 0;border-top:1px solid var(--borda)}
+/* stat tiles */
+.stat-row{display:flex;gap:9px}
+.stat{flex:1;background:var(--bg2);border:1px solid var(--borda);border-radius:11px;padding:11px 12px}
+.stat .l{font-size:9px;color:var(--txt2);text-transform:uppercase;letter-spacing:.04em;font-weight:500}
+.stat .n{font-family:'Jost';font-weight:600;font-size:18px;color:#fff;margin-top:3px;line-height:1}
+.stat .u{font-size:9.5px;font-weight:600;margin-top:5px;display:inline-flex;align-items:center;gap:3px}
+.stat .u.up{color:var(--verde)} .stat .u.b{color:var(--azul-claro)} .stat .u.n{color:var(--txt2)}
+/* feed */
+.blk-h{font-size:10px;color:var(--txt2);text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-bottom:2px}
+.feed{display:flex;flex-direction:column}
+.feed-i{display:flex;align-items:center;gap:9px;padding:7px 2px;border-bottom:1px solid var(--borda)}
+.feed-i:last-child{border-bottom:none}
+.feed-ic{width:24px;height:24px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.feed-ic svg{width:13px;height:13px}
+.feed-ic.g{background:rgba(22,199,132,.14);color:var(--verde)} .feed-ic.b{background:rgba(30,91,255,.16);color:var(--azul-claro)} .feed-ic.a{background:rgba(245,166,35,.14);color:#F5A623}
+.feed-t{flex:1;font-size:11px;color:var(--txt);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed-t b{color:#fff;font-weight:500}
+.feed-w{font-size:9.5px;color:var(--txt2);flex-shrink:0;font-variant-numeric:tabular-nums}
+/* kanban */
+.kan{display:flex;gap:8px;flex:1;min-height:0}
+.kan-col{flex:1;background:var(--bg2);border:1px solid var(--borda);border-radius:11px;padding:9px 8px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.kan-hd{display:flex;align-items:center;justify-content:space-between;font-size:9px;color:var(--txt2);font-weight:600}
+.kan-hd b{color:#fff;font-size:10.5px;font-family:'Jost'}
+.kan-hd .ct{background:var(--surf2);border-radius:6px;padding:1px 6px;font-size:8.5px;color:var(--txt)}
+.kan-d{background:var(--surf2);border:1px solid var(--borda);border-radius:9px;padding:8px 9px;border-left:2px solid var(--azul-claro)}
+.kan-d.g{border-left-color:var(--verde)} .kan-d.a{border-left-color:#F5A623}
+.kan-d b{display:block;font-family:'Jost';font-weight:500;font-size:10.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kan-d .v{font-size:11px;color:var(--azul-claro);font-weight:600;margin-top:2px}
+.kan-d .m{font-size:8.5px;color:var(--txt2);margin-top:4px}
+/* tabela */
+.ftw{flex:1;overflow:hidden}
+.ftable{width:100%;border-collapse:collapse;font-size:10.5px}
+.ftable th{text-align:left;font-size:8.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--txt2);font-weight:600;padding:0 7px 7px;border-bottom:1px solid var(--borda)}
+.ftable td{padding:7px;border-bottom:1px solid var(--borda);color:var(--txt);white-space:nowrap}
+.ftable tr:last-child td{border-bottom:none}
+.ftable .c{font-weight:500;color:#fff}
+.ftable .rv{font-family:'Jost';font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.ftable .rv.in{color:var(--verde)} .ftable .rv.out{color:var(--txt)}
+.tag{font-size:8px;border-radius:5px;padding:2px 6px;font-weight:600;white-space:nowrap}
+.tag.pix{color:var(--verde);background:rgba(22,199,132,.1);border:1px solid rgba(22,199,132,.3)}
+.tag.cat{color:var(--azul-claro);background:rgba(30,91,255,.1);border:1px solid rgba(30,91,255,.25)}
+.tag.nf{color:#F5A623;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.28)}
+/* obras / produção */
+.proj{display:flex;flex-direction:column;gap:8px}
+.proj-i{background:var(--bg2);border:1px solid var(--borda);border-radius:11px;padding:10px 12px}
+.proj-tp{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.proj-tp b{font-family:'Jost';font-weight:500;font-size:11.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.proj-st{font-size:8px;border-radius:5px;padding:2px 7px;font-weight:600;flex-shrink:0}
+.proj-st.run{color:var(--azul-claro);background:rgba(30,91,255,.12)} .proj-st.due{color:#F5A623;background:rgba(245,166,35,.12)} .proj-st.ok{color:var(--verde);background:rgba(22,199,132,.12)}
+.proj-m{font-size:9px;color:var(--txt2);margin-top:3px;display:flex;justify-content:space-between}
+.proj-bar{height:5px;border-radius:3px;background:var(--surf2);margin-top:7px;overflow:hidden}
+.proj-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--azul),var(--azul-claro))}
+/* gráfico anima ao aparecer */
+.app-view.active .cf-line{stroke-dasharray:640;stroke-dashoffset:640;animation:drawLine 1.5s ease .15s forwards}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.app-live::before,.app-view.active .cf-line{animation:none}.app-view.active .cf-line{stroke-dashoffset:0}}
+@media (max-width:768px){
+  .app{height:auto;flex-direction:row}
+  .app-side{width:48px;padding:12px 5px}
+  .app-brand .app-bn,.app-nav-i span,.app-nav-x span,.app-user .app-un{display:none}
+  .app-brand{justify-content:center;padding:0 0 12px}
+  .app-nav-i,.app-nav-x{justify-content:center;padding:9px 0;gap:0}
+  .app-nav-i.active::before{left:-5px}
+  .app-user{justify-content:center;padding:9px 0 2px}
+  .app-search{display:none}
+  .app-stage{height:440px;flex:none}
+  .app-main{min-height:440px}
+  .kan-d .m,.feed-w{display:none}
+}
 
 section{padding:90px 0}
 .alt{background:var(--bg2)}
@@ -425,67 +529,106 @@ footer a:hover{color:var(--azul-claro)}
     </div>
     <div class="mock-wrap">
     <div class="mock-ghost" aria-hidden="true"></div>
-    <div class="mock" id="crmShow" aria-hidden="true">
-      <div class="mock-top"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">Topocore · Painel</span><span class="rt"><span class="on">ao vivo</span><span class="av"></span></span></div>
-      <div class="mock-body">
-        <div class="mock-stack">
-          <!-- Tela 1: Painel / pipeline -->
-          <div class="mock-screen active" data-title="Topocore · Painel">
-            <div class="kpi-strip">
-              <div class="kpi-main"><div class="lbl">Pipeline do mês</div><div class="val">R$ 96.300</div><div class="kpi-up">▲ 12% vs. maio · conversão 38%</div></div>
-              <div class="spark"><div class="lbl">Fechado / mês</div><div class="spark-bars"><i style="height:34%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:68%"></i><i style="height:58%"></i><i style="height:95%"></i></div></div>
+    <div class="mock app" id="crmShow" aria-hidden="true">
+      <aside class="app-side">
+        <div class="app-brand"><span class="app-logo">T</span><span class="app-bn">Topocore<small>CRM · operação</small></span></div>
+        <nav class="app-nav">
+          <button class="app-nav-i active" data-v="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Painel</span></button>
+          <button class="app-nav-i" data-v="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="14" rx="1.5"/></svg><span>Comercial</span></button>
+          <button class="app-nav-i" data-v="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M16 12.5h2"/><path d="M3 9h18"/></svg><span>Financeiro</span></button>
+          <button class="app-nav-i" data-v="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/></svg><span>Produção</span></button>
+          <button class="app-nav-i" data-v="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10Z"/><circle cx="12" cy="11" r="2"/></svg><span>Parceiros</span></button>
+          <span class="app-nav-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/></svg><span>Propostas</span></span>
+          <span class="app-nav-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10.5 21h3"/></svg><span>Cobranças</span></span>
+        </nav>
+        <div class="app-user"><span class="av"></span><span class="app-un">Guilherme<small>Sócio · admin</small></span></div>
+      </aside>
+      <div class="app-main">
+        <div class="app-top">
+          <div class="app-title"><b>Painel</b><span>visão geral da operação</span></div>
+          <div class="app-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-3.5-3.5"/></svg>Buscar cliente, proposta, NF…</div>
+          <div class="app-tr"><span class="app-live">ao vivo</span><span class="app-bell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10.5 21h3"/></svg><i></i></span><span class="av"></span></div>
+        </div>
+        <div class="app-stage">
+          <!-- 0 Painel -->
+          <div class="mock-screen app-view active" data-title="Painel" data-sub="visão geral da operação">
+            <div class="stat-row">
+              <div class="stat"><div class="l">A receber (mês)</div><div class="n">R$ 48.250</div><div class="u up">▲ 12% vs. maio</div></div>
+              <div class="stat"><div class="l">Recebido · PIX</div><div class="n">R$ 31.900</div><div class="u b">68% do previsto</div></div>
+              <div class="stat"><div class="l">Margem média</div><div class="n">34%</div><div class="u up">▲ 3 pts</div></div>
             </div>
-            <div class="mock-pipe">
-              <div class="mock-col"><div class="ch">Proposta<span class="ct">4</span></div><div class="col-bar b"></div>
-                <div class="mock-deal"><b>Construtora Aurora</b>R$ 4.800 · <span class="pix">PIX enviado</span></div>
-                <div class="mock-deal"><b>Elétrica Vale</b>R$ 12.300</div>
-              </div>
-              <div class="mock-col"><div class="ch">Negociação<span class="ct">2</span></div><div class="col-bar b"></div>
-                <div class="mock-deal"><b>Obra Bela Vista</b>R$ 27.500</div>
-              </div>
-              <div class="mock-col"><div class="ch">Fechado<span class="ct">3</span></div><div class="col-bar g"></div>
-                <div class="mock-deal"><b>Contrato mensal</b>R$ 1.290/mês <span class="pix">✓ pago</span></div>
-              </div>
-            </div>
-          </div>
-          <!-- Tela 2: Fluxo de caixa -->
-          <div class="mock-screen" data-title="Topocore · Fluxo de Caixa">
-            <div class="cf-head"><div><div class="lbl">Saldo em caixa</div><div class="big">R$ 27.480</div></div><span class="cf-chip">▲ 12,4% no mês</span></div>
             <div class="cf-chart">
-              <svg viewBox="0 0 430 84" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <defs><linearGradient id="cfg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B85FF" stop-opacity=".42"/><stop offset="1" stop-color="#5B85FF" stop-opacity="0"/></linearGradient></defs>
-                <line x1="0" y1="20" x2="430" y2="20" stroke="#2B2B33" stroke-width="1"/>
-                <line x1="0" y1="48" x2="430" y2="48" stroke="#2B2B33" stroke-width="1"/>
-                <path d="M12,70 L93,58 L174,64 L255,46 L336,30 L418,12 L418,80 L12,80 Z" fill="url(#cfg)"/>
-                <path d="M12,70 L93,58 L174,64 L255,46 L336,30 L418,12" fill="none" stroke="#5B85FF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-                <circle cx="418" cy="12" r="3.8" fill="#fff" stroke="#5B85FF" stroke-width="2.4"/>
+              <svg viewBox="0 0 430 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="dg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B85FF" stop-opacity=".4"/><stop offset="1" stop-color="#5B85FF" stop-opacity="0"/></linearGradient></defs>
+                <line x1="0" y1="24" x2="430" y2="24" stroke="#2B2B33"/><line x1="0" y1="58" x2="430" y2="58" stroke="#2B2B33"/>
+                <path d="M10,74 L80,62 L150,68 L220,48 L290,54 L360,30 L420,16 L420,86 L10,86 Z" fill="url(#dg)"/>
+                <path class="cf-line" d="M10,74 L80,62 L150,68 L220,48 L290,54 L360,30 L420,16" fill="none" stroke="#5B85FF" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="420" cy="16" r="3.6" fill="#fff" stroke="#5B85FF" stroke-width="2.2"/>
               </svg>
             </div>
-            <div class="cf-months"><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span></div>
-            <div class="cf-stats">
-              <div class="cf-stat"><div class="l">Entradas (mês)</div><div class="v in">+ R$ 31.900</div></div>
-              <div class="cf-stat"><div class="l">Saídas (mês)</div><div class="v out">− R$ 12.420</div></div>
-            </div>
-            <div class="cf-list">
-              <div class="cf-row"><span class="cf-d">14/06</span><span class="cf-desc">Recebimento — Construtora Aurora</span><span class="cf-pix">PIX</span><span class="cf-v in">+6.400</span></div>
-              <div class="cf-row"><span class="cf-d">12/06</span><span class="cf-desc">Recebimento — Eng. Vale Verde</span><span class="cf-pix">PIX</span><span class="cf-v in">+4.800</span></div>
+            <div>
+              <div class="blk-h">Atividade recente</div>
+              <div class="feed">
+                <div class="feed-i"><span class="feed-ic b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/></svg></span><span class="feed-t"><b>Proposta #0142</b> enviada — Construtora Aurora</span><span class="feed-w">agora</span></div>
+                <div class="feed-i"><span class="feed-ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="feed-t"><b>+ R$ 6.400</b> recebido via PIX — Aurora</span><span class="feed-w">4 min</span></div>
+                <div class="feed-i"><span class="feed-ic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="feed-t">Cobrança lembrada — <b>Eng. Vale Verde</b></span><span class="feed-w">1 h</span></div>
+              </div>
             </div>
           </div>
-          <!-- Tela 3: Mapa de parceiros -->
-          <div class="mock-screen" data-title="Topocore · Mapa de Parceiros">
+          <!-- 1 Comercial (kanban) -->
+          <div class="mock-screen app-view" data-title="Comercial" data-sub="funil de propostas">
+            <div class="kan">
+              <div class="kan-col"><div class="kan-hd"><b>Proposta</b><span class="ct">4 · R$ 41k</span></div>
+                <div class="kan-d"><b>Construtora Aurora</b><div class="v">R$ 4.800</div><div class="m">PIX enviado · há 2 d</div></div>
+                <div class="kan-d"><b>Elétrica Vale</b><div class="v">R$ 12.300</div><div class="m">aguardando · há 1 d</div></div>
+              </div>
+              <div class="kan-col"><div class="kan-hd"><b>Negociação</b><span class="ct">2 · R$ 35k</span></div>
+                <div class="kan-d a"><b>Obra Bela Vista</b><div class="v">R$ 27.500</div><div class="m">reunião 5ª · quente</div></div>
+              </div>
+              <div class="kan-col"><div class="kan-hd"><b>Fechado</b><span class="ct">3 · R$ 20k</span></div>
+                <div class="kan-d g"><b>Contrato mensal</b><div class="v">R$ 1.290/mês</div><div class="m">pago · ativo</div></div>
+              </div>
+            </div>
+          </div>
+          <!-- 2 Financeiro (gráfico + tabela) -->
+          <div class="mock-screen app-view" data-title="Financeiro" data-sub="fluxo de caixa e lançamentos">
+            <div class="cf-head"><div><div class="lbl">Saldo em caixa</div><div class="big">R$ 27.480</div></div><span class="cf-chip">▲ 12,4% no mês</span></div>
+            <div class="cf-chart">
+              <svg viewBox="0 0 430 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="dg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16C784" stop-opacity=".32"/><stop offset="1" stop-color="#16C784" stop-opacity="0"/></linearGradient></defs>
+                <path d="M10,48 L80,40 L150,44 L220,30 L290,34 L360,18 L420,9 L420,56 L10,56 Z" fill="url(#dg2)"/>
+                <path class="cf-line" d="M10,48 L80,40 L150,44 L220,30 L290,34 L360,18 L420,9" fill="none" stroke="#16C784" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="ftw">
+              <table class="ftable">
+                <thead><tr><th>Data</th><th>Lançamento</th><th>Categoria</th><th></th><th style="text-align:right">Valor</th></tr></thead>
+                <tbody>
+                  <tr><td>14/06</td><td class="c">Construtora Aurora</td><td><span class="tag cat">Recebimento</span></td><td><span class="tag pix">PIX</span></td><td class="rv in">+6.400</td></tr>
+                  <tr><td>13/06</td><td class="c">Parceiro de campo</td><td><span class="tag cat">Custo obra</span></td><td></td><td class="rv out">−2.150</td></tr>
+                  <tr><td>12/06</td><td class="c">Eng. Vale Verde</td><td><span class="tag cat">Recebimento</span></td><td><span class="tag pix">PIX</span></td><td class="rv in">+4.800</td></tr>
+                  <tr><td>11/06</td><td class="c">NFS-e #0098</td><td><span class="tag nf">Nota fiscal</span></td><td></td><td class="rv in">+3.200</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- 3 Produção (obras) -->
+          <div class="mock-screen app-view" data-title="Produção" data-sub="obras e entregas">
+            <div class="proj">
+              <div class="proj-i"><div class="proj-tp"><b>Scan-to-BIM — Ed. Anita Garibaldi</b><span class="proj-st run">em andamento</span></div><div class="proj-m"><span>Modelagem BIM · Arthur</span><span>72%</span></div><div class="proj-bar"><i style="width:72%"></i></div></div>
+              <div class="proj-i"><div class="proj-tp"><b>Levantamento — Obra Bela Vista</b><span class="proj-st due">prazo 30/06</span></div><div class="proj-m"><span>Campo · equipe topo</span><span>45%</span></div><div class="proj-bar"><i style="width:45%"></i></div></div>
+              <div class="proj-i"><div class="proj-tp"><b>Cadastral — Loteamento Sul</b><span class="proj-st ok">entregue</span></div><div class="proj-m"><span>Processamento · concluído</span><span>100%</span></div><div class="proj-bar"><i style="width:100%"></i></div></div>
+            </div>
+          </div>
+          <!-- 4 Parceiros (mapa) -->
+          <div class="mock-screen app-view" data-title="Parceiros" data-sub="rede de campo e BIM">
             <div class="cmap-head"><span class="t">Rede de parceiros</span><span class="s">12 ativos · raio 100 km</span></div>
             <div class="cmap-grid">
               <div class="cmap">
                 <div class="cmap-radius" style="left:5%;top:14%;width:118px;height:118px"></div>
                 <div class="cmap-radius g" style="left:42%;top:46%;width:92px;height:92px"></div>
                 <div class="cmap-radius" style="left:56%;top:6%;width:66px;height:66px"></div>
-                <div class="cmap-pin azul pulse" style="left:25%;top:36%"></div>
-                <div class="cmap-pin amar" style="left:40%;top:22%"></div>
-                <div class="cmap-pin verde" style="left:58%;top:60%"></div>
-                <div class="cmap-pin azul" style="left:73%;top:28%"></div>
-                <div class="cmap-pin verde" style="left:19%;top:66%"></div>
-                <div class="cmap-pin amar" style="left:66%;top:76%"></div>
-                <div class="cmap-pin azul" style="left:85%;top:52%"></div>
+                <div class="cmap-pin azul pulse" style="left:25%;top:36%"></div><div class="cmap-pin amar" style="left:40%;top:22%"></div><div class="cmap-pin verde" style="left:58%;top:60%"></div><div class="cmap-pin azul" style="left:73%;top:28%"></div><div class="cmap-pin verde" style="left:19%;top:66%"></div><div class="cmap-pin amar" style="left:66%;top:76%"></div><div class="cmap-pin azul" style="left:85%;top:52%"></div>
               </div>
               <div class="cmap-side">
                 <div class="pcard"><div class="pn"><i class="azul"></i>GeoScan Sul</div><div class="pc">Curitiba · PR · 18 km</div><div class="pr">★★★★★<small>Scanner 3D</small></div></div>
@@ -495,12 +638,7 @@ footer a:hover{color:var(--azul-claro)}
             </div>
           </div>
         </div>
-        <div class="mock-cap">Telas ilustrativas · dados fictícios de exemplo</div>
-        <div class="mock-tabs">
-          <span class="mock-tab active"><span class="dt"></span>Painel</span>
-          <span class="mock-tab"><span class="dt"></span>Fluxo de caixa</span>
-          <span class="mock-tab"><span class="dt"></span>Mapa de parceiros</span>
-        </div>
+        <div class="app-cap">Tela ilustrativa do Topocore CRM · dados fictícios de exemplo</div>
       </div>
     </div>
     <div class="mock-scrim" aria-hidden="true"></div>
@@ -953,23 +1091,25 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';q.setAttribute('aria-expanded','true')}
   });
 });
-/* CRM showcase — carrossel auto-rotativo (Painel · Fluxo · Mapa) */
+/* CRM showcase — app de verdade: módulos rotativos via barra lateral */
 (function(){
   var box=document.getElementById('crmShow'); if(!box) return;
-  var screens=box.querySelectorAll('.mock-screen');
-  var tabs=box.querySelectorAll('.mock-tab');
-  var titleEl=box.querySelector('.mock-top .t');
+  var views=box.querySelectorAll('.app-stage .app-view');
+  var navs=box.querySelectorAll('.app-nav-i');
+  var tB=box.querySelector('.app-title b'), tS=box.querySelector('.app-title span');
   var i=0,timer=null;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function show(n){
-    i=(n+screens.length)%screens.length;
-    screens.forEach(function(s,k){s.classList.toggle('active',k===i)});
-    tabs.forEach(function(t,k){t.classList.toggle('active',k===i)});
-    if(titleEl){var dt=screens[i].getAttribute('data-title'); if(dt) titleEl.textContent=dt;}
+    i=(n+views.length)%views.length;
+    views.forEach(function(s,k){s.classList.toggle('active',k===i)});
+    navs.forEach(function(t,k){t.classList.toggle('active',k===i)});
+    var v=views[i];
+    if(tB) tB.textContent=v.getAttribute('data-title')||'';
+    if(tS) tS.textContent=v.getAttribute('data-sub')||'';
   }
-  function start(){ if(reduce) return; stop(); timer=setInterval(function(){show(i+1)},4200); }
+  function start(){ if(reduce) return; stop(); timer=setInterval(function(){show(i+1)},4600); }
   function stop(){ if(timer){clearInterval(timer);timer=null;} }
-  tabs.forEach(function(t,k){t.addEventListener('click',function(){show(k);start();})});
+  navs.forEach(function(t,k){t.addEventListener('click',function(){show(k);start();})});
   box.addEventListener('mouseenter',stop);
   box.addEventListener('mouseleave',start);
   show(0); start();
